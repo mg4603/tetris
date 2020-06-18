@@ -1,8 +1,5 @@
 /**************************************************************************
  * Commands.h - Class that handles inputs (keyboard inputs)
- *
- * @author Abesari Woldeyesus (abesary@bu.edu)
- *
 /**************************************************************************/
 
 #ifndef _COMMANDS_

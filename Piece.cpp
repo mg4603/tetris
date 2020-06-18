@@ -1,7 +1,5 @@
 /*****************************************************************************************
  * Piece.cpp - creates a piece array given a type and rotation
- *
- * @author - Abesari Woldeyesus (abesary@bu.edu)
 /*****************************************************************************************/
 
 #include "Piece.h"

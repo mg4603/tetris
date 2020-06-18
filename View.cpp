@@ -1,8 +1,5 @@
 /*****************************************************************************************
  * View.cpp - Class for handling drawing, it uses SDL2 for the rendering.
- *
- * @author - Abesari Woldeyesus (abesary@bu.edu)
- *
 /*****************************************************************************************/
 
 #include "View.h"
@@ -13,10 +10,10 @@ static SDL_Surface  *surface;
 static SDL_Surface  *imgSurface;
 static SDL_Texture *background_tx;										    // Screen
 static Uint32 mColors [COLOR_MAX][4] = {  {0   , 0   , 0   , 0   },
-                                          {0x00, 0x00, 0x00, 0xff},					// Colors
+                                          {0xc0, 0xc0, 0xc0, 0xff},					// Colors
                                           {0xff, 0x00, 0x00, 0xff},
                                           {0x00, 0xff, 0x00, 0xff},
-                                          {0x00, 0x00, 0xff, 0xff},
+                                          {0xad, 0xd8, 0xe6, 0xff},
                                           {0x00, 0xff, 0xff, 0xff},
                                           {0xff, 0x00, 0xff, 0xff},
                                           {0xff, 0xff, 0x00, 0xff},
@@ -85,11 +82,11 @@ int View::initGraph ()
         return 1;
     }
 
-    //win = SDL_CreateWindow("Hello World!", 100, 100, 640, 480, SDL_WINDOW_SHOWN);
+    // win = SDL_CreateWindow("Tetris", 100, 100, 1024, 550, SDL_WINDOW_SHOWN);
     win = SDL_CreateWindow("Tetris",
-                          SDL_WINDOWPOS_UNDEFINED,
-                          SDL_WINDOWPOS_UNDEFINED,
-                          1024, 550,
+                          SDL_WINDOWPOS_CENTERED,
+                          SDL_WINDOWPOS_CENTERED,
+                          700, 500,
                           SDL_WINDOW_OPENGL);
 
     if (win == NULL){
@@ -106,10 +103,10 @@ int View::initGraph ()
         return 1;
     }
 
-    //surface = SDL_GetWindowSurface(win);
-    imgSurface = SDL_LoadBMP("Dreaming-of-Mars.bmp");
-    background_tx = SDL_CreateTextureFromSurface (ren, imgSurface);
-    SDL_FreeSurface( imgSurface );
+    surface = SDL_GetWindowSurface(win);
+    // imgSurface = SDL_LoadBMP("Dreaming-of-Mars.bmp");
+    background_tx = SDL_CreateTextureFromSurface (ren, surface);
+    SDL_FreeSurface( surface );
     SDL_RenderCopy(ren, background_tx, NULL, NULL);
 
     updateScreen();

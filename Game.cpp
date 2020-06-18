@@ -1,8 +1,5 @@
 /*****************************************************************************************
  * Game.cpp - Logic of the game
- *
- * @author - Abesari Woldeyesus (abesary@bu.edu)
- *
 /*****************************************************************************************/
 
 #ifndef LINUX
@@ -17,7 +14,7 @@ Init
 */
 Game::Game (View *pView, Commands *pCommands, int pScreenHeight )
 {
-    mScreenHeight = 480;
+    mScreenHeight = 430;
 
     view = pView;
     commands = pCommands;
@@ -84,8 +81,8 @@ void Game::initGame()
     posX      = (BOARD_WIDTH / 2) + piece->getXInitialPosition();
     posY      = piece->getYInitialPosition();
 
-    nextPosX = 10;
-    nextPosY = 0;
+    nextPosX = -8;
+    nextPosY = 4;
 }
 
 /*
@@ -132,12 +129,12 @@ void Game::drawBoard()
     // Calculate the limits of the board in pixels
     int mX1 = BOARD_POSITION - (BLOCK_SIZE * (BOARD_WIDTH / 2)) - 1;
     int mX2 = BOARD_POSITION + (BLOCK_SIZE * (BOARD_WIDTH / 2));
-    int mY = mScreenHeight - (BLOCK_SIZE * BOARD_HEIGHT);
-
+    // int mY = mScreenHeight - (BLOCK_SIZE * BOARD_HEIGHT);
+    int mY = 30;
     // Rectangles that delimits the board
-	view->drawBlock (mX1 - BOARD_LINE_WIDTH, mY, BOARD_LINE_WIDTH, mScreenHeight - 1, BLUE);
-    view->drawBlock (mX2, mY, BOARD_LINE_WIDTH, mScreenHeight - 1, BLUE);
-    view->drawBlock (mX1, mScreenHeight, BLOCK_SIZE * BOARD_WIDTH, BOARD_LINE_WIDTH, BLUE );
+	view->drawBlock (mX1 - BOARD_LINE_WIDTH, mY, BOARD_LINE_WIDTH, mScreenHeight - 20, BLUE);
+    view->drawBlock (mX2, mY, BOARD_LINE_WIDTH, mScreenHeight - 20, BLUE);
+    view->drawBlock (mX1, mScreenHeight , BLOCK_SIZE * BOARD_WIDTH + 1, BOARD_LINE_WIDTH, BLUE );
 
     mX1++;
 

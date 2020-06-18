@@ -5,7 +5,7 @@
 #endif
 #include "Game.h"
 
-const int SCREEN_WIDTH = 640;
+const int SCREEN_WIDTH = 100;
 const int SCREEN_HEIGHT = 480;
 
 /*

@@ -1,8 +1,5 @@
 /*****************************************************************************************
  * Board.cpp - Board of the game. A matrix of n x m holes.
- *
- * @author - Abesari Woldeyesus (abesary@bu.edu)
- *
 /*****************************************************************************************/
 
 // ------includes-------
@@ -13,7 +10,7 @@
 Board::Board (Piece *pPiece, int pScreenHeight)
 {
 	// Get the screen height
-	mScreenHeight = 480;
+	mScreenHeight = 430;
 
 	// Get the pointer to the Piece class
 	piece = pPiece;
