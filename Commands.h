@@ -7,10 +7,14 @@
 
 // ------- Includes --------
 
-#include "SDL2/include/SDL2/SDL.h"
+// #include "SDL2/include/SDL2/SDL.h"
+
+#include <SDL2/SDL.h>
+
+
 #include <stdlib.h>
 
-#pragma comment (lib, "SDL/lib/SDL.lib")
+// #pragma comment (lib, "SDL/lib/SDL.lib")
 
 class Commands {
 public:

@@ -5,7 +5,7 @@ OBJS = Main.cpp Piece.cpp View.cpp Board.cpp Game.cpp Commands.cpp
 CC = g++
 
 #LDFLAGS specifies what we're linking against
-LDFLAGS = -lSDL2 -lSDL2_gfx 
+LDFLAGS = -lSDL2 -lSDL2_gfx -lSDL2_ttf
 
 #OBJ_NAME specifies the name of our exectuable
 OBJ_NAME = Tetris
