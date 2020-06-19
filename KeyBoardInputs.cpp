@@ -1,8 +1,8 @@
 
-#include "Commands.h"
+#include "KeyBoardInputs.h"
 
 
-int Commands::pollkey (SDL_Event *event)
+int KeyBoardInputs::pollkey (SDL_Event *event)
 {
     while( SDL_PollEvent(event) )
     {
@@ -17,7 +17,7 @@ int Commands::pollkey (SDL_Event *event)
 }
 
 
-int Commands::isKeyDown (int pKey)
+int KeyBoardInputs::isKeyDown (int pKey)
 {
     const Uint8* myKeytable;
     int mNumkeys;

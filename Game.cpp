@@ -3,12 +3,12 @@
 #endif
 #include "Game.h"
 
-Game::Game (View *pView, Commands *pCommands, int pScreenHeight )
+Game::Game (View *pView, KeyBoardInputs *pKeyBoardInputs, int pScreenHeight )
 {
     mScreenHeight = 430;
 
     view = pView;
-    commands = pCommands;
+    keyBoardInputs = pKeyBoardInputs;
 
     initGame();
 }

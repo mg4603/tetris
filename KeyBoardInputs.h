@@ -10,7 +10,7 @@
 #include <stdlib.h>
 
 
-class Commands {
+class KeyBoardInputs {
 public:
     int pollkey    (SDL_Event *e);
     int isKeyDown  (int pKey);

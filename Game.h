@@ -7,7 +7,7 @@
 
 #include "Board.h"
 #include "View.h"
-#include "Commands.h"
+#include "KeyBoardInputs.h"
 #include <time.h>
 
 // ------ Defines -----
@@ -18,7 +18,7 @@
 class Game {
 public:
     Game    (  View *pView,
-               Commands *pCommands,
+               KeyBoardInputs *pKeyBoardInputs,
                int pScreenHeight );
 
     void drawScene      ();
@@ -37,7 +37,7 @@ private:
 
     Sprite *nextSprite;
     View *view;
-    Commands *commands;
+    KeyBoardInputs *keyBoardInputs;
 
     int getRand     (int pA, int pB); //
     void initGame   (); //

@@ -12,9 +12,9 @@ const int SCREEN_HEIGHT = 480;
 int main (int argc, char* args[])
 {
     View view;
-    Commands cmds;
+    KeyBoardInputs keyBoardInputs;
     int screenHeight = view.getScreenHeight();
-    Game game(&view, &cmds, screenHeight);
+    Game game(&view, &keyBoardInputs, screenHeight);
 
     bool quit = false;
     SDL_Event e;
@@ -26,7 +26,7 @@ int main (int argc, char* args[])
     {
         game.drawScene();
 
-        int key = cmds.pollkey(&e);
+        int key = keyBoardInputs.pollkey(&e);
         while(SDL_PollEvent( &e ) != 0){
             if(e.type == SDL_QUIT)
                 quit = true;
