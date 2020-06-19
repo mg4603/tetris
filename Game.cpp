@@ -3,7 +3,6 @@
 /*****************************************************************************************/
 
 #ifndef LINUX
-//#include <windows.h>
 #endif
 #include "Game.h"
 
@@ -170,6 +169,7 @@ void Game::drawScene ()
     view->loadBackGround();                     // Load background image
     drawBoard ();				                // Draw the delimitation lines and blocks stored in the board
     drawPiece (posX, posY, piece);				// Draw the playing piece
+    
     drawPiece (nextPosX, nextPosY, nextPiece);  // Draw the next piece
 
     view->updateScreen();

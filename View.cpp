@@ -8,7 +8,7 @@ static SDL_Window  *win;
 static SDL_Renderer *ren;
 static SDL_Surface  *surface;
 static SDL_Surface  *imgSurface;
-static SDL_Texture *background_tx;										    // Screen
+static SDL_Texture *background_tx;						    // Screen
 static Uint32 mColors [COLOR_MAX][4] = {  {0   , 0   , 0   , 0   },
                                           {0xc0, 0xc0, 0xc0, 0xff},					// Colors
                                           {0xff, 0x00, 0x00, 0xff},
@@ -41,12 +41,12 @@ int View::messageBox ()
       };
     const SDL_MessageBoxData messageboxdata = {
             SDL_MESSAGEBOX_INFORMATION, /* .flags */
-            NULL, /* .window */
-            "GAME OVER!", /* .title */
-            "Would you like to play again?", /* .message */
-            SDL_arraysize(buttons), /* .numbuttons */
-            buttons, /* .buttons */
-            &colorScheme /* .colorScheme */
+            NULL, 
+            "GAME OVER!", 
+            "Would you like to play again?", 
+            SDL_arraysize(buttons), 
+            buttons, 
+            &colorScheme
         };
 
      int buttonid;
@@ -113,6 +113,19 @@ int View::initGraph ()
 
     return 1;
 }
+
+/*
+=================================================================
+drawBlock - Draws text on screen
+=================================================================
+
+
+asfdhljaslkdjflkasjdlkfjlkajsdlkfjlksjdlfkjalksdjlfkjlsajdflkjlaksdjfl;jsalkdjflkjsalkdfjlksjadl fyidhgoahohaodfhj ahdmfkj
+*/
+
+
+
+
 
 /*
 =================================================================
