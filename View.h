@@ -30,5 +30,5 @@ public:
     void cleanUp        ();
     void loadBackGround ();
     int messageBox      ();
-    void loadText       ();
+    
 };
