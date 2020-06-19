@@ -4,7 +4,7 @@
 
 // ------ Includes -----
 
-#include "Piece.h"
+#include "Sprite.h"
 
 // ------ Defines -----
 
@@ -21,25 +21,25 @@
 class Board {
 public:
 
-    Board                       (Piece *pPiece, int pScreenHeight);
+    Board                       (Sprite *pSprite, int pScreenHeight);
 
     int getXPosInPixels         (int pPos);
     int getYPosInPixels         (int pPos);
     bool isFreeBlock            (int pX, int pY); 
 
     bool isPossibleMovement     (int pX, int pY); 
-    void storePiece             (int pX, int pY); 
+    void storeSprite             (int pX, int pY); 
     void deletePossibleLines    ();
     bool isGameOver             ();
-    void updateCurrentPiece     (Piece * piece); 
+    void updateCurrentSprite     (Sprite * sprite); 
     void clearBoard             ();
-    int storedPieceType         (int x, int y);  
+    int storedSpriteType         (int x, int y);  
 
 private:
 
     enum { POS_FREE, POS_FILLED };          
     int mBoard [BOARD_WIDTH][BOARD_HEIGHT]; 
-    Piece* piece;
+    Sprite* sprite;
     int mScreenHeight;
 
     void initBoard();

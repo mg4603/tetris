@@ -61,7 +61,7 @@ int main (int argc, char* args[])
                while (game.board->isPossibleMovement(game.posX, game.posY))
                 { game.posY++; }
 
-                game.board->storePiece (game.posX, game.posY - 1);
+                game.board->storeSprite (game.posX, game.posY - 1);
                 game.board->deletePossibleLines ();
 
                 if (game.board->isGameOver())
@@ -69,15 +69,15 @@ int main (int argc, char* args[])
                     if(!game.restart()) goto exit_loop;
                 }
 
-                game.createNewPiece();
+                game.createNewSprite();
                 break;
             }
             case (SDLK_UP):
             {
-                game.piece->rotatePiece();
+                game.sprite->rotateSprite();
                 if (!game.board->isPossibleMovement (game.posX, game.posY)){
                     int i = 3;
-                    game.piece->rotatePiece(3);  //
+                    game.sprite->rotateSprite(3);  //
                 }
                 break;
             }
@@ -89,7 +89,7 @@ int main (int argc, char* args[])
             if (game.board->isPossibleMovement(game.posX, game.posY + 1)) {
                 game.posY++;
             } else {
-                game.board->storePiece (game.posX, game.posY);
+                game.board->storeSprite (game.posX, game.posY);
                 game.board->deletePossibleLines ();
 
                 if(game.board->isGameOver())
@@ -97,7 +97,7 @@ int main (int argc, char* args[])
 
                     if(!game.restart()) break;
                 }
-                game.createNewPiece();
+                game.createNewSprite();
             }
 
             time1 = SDL_GetTicks();

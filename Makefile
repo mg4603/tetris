@@ -1,15 +1,14 @@
-#OBJS specifies which files to compile as part of the project
-OBJS = Main.cpp Piece.cpp View.cpp Board.cpp Game.cpp Commands.cpp
+#list of files for compilation
+OBJS = Main.cpp Sprite.cpp View.cpp Board.cpp Game.cpp Commands.cpp
 
-#CC specifies which compiler we're using
+#compiler
 CC = g++
 
-#LDFLAGS specifies what we're linking against
+#linker flags
 LDFLAGS = -lSDL2 -lSDL2_gfx -lSDL2_ttf
 
-#OBJ_NAME specifies the name of our exectuable
+#obj name
 OBJ_NAME = Tetris
 
-#This is the target that compiles our executable
 all : $(OBJS)
 	$(CC) $(OBJS) -o $(OBJ_NAME) $(LDFLAGS)

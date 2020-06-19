@@ -1,6 +1,3 @@
-/*****************************************************************************************
- * Game.h - maintains all game objects
-/*****************************************************************************************/
 
 
 #ifndef _GAME_
@@ -15,12 +12,8 @@
 
 // ------ Defines -----
 
-#define WAIT_TIME 700           // Number of milliseconds that the piece remains before going 1 block down */
+#define WAIT_TIME 700           
 
-
-// --------------------------------------------------------------------------------
-//                                   Game
-// --------------------------------------------------------------------------------
 
 class Game {
 public:
@@ -29,26 +22,26 @@ public:
                int pScreenHeight );
 
     void drawScene      ();
-    void createNewPiece ();
+    void createNewSprite ();
     bool restart        ();
 
     int posX, posY;
-    int pieceType, rotation;
+    int spriteType, rotation;
 
     Board *board;
-    Piece *piece;
+    Sprite *sprite;
 private:
     int mScreenHeight;
     int nextPosX, nextPosY;
-    int nextPieceType, nextRotation;
+    int nextSpriteType, nextRotation;
 
-    Piece *nextPiece;
+    Sprite *nextSprite;
     View *view;
     Commands *commands;
 
     int getRand     (int pA, int pB); //
     void initGame   (); //
-    void drawPiece  (int pX, int pY/*, color pColor*/, Piece* piece); //
+    void drawSprite  (int pX, int pY/*, color pColor*/, Sprite* sprite); //
     void drawBoard  (); //
 };
 

@@ -19,18 +19,18 @@ int Game::getRand (int pA, int pB)
     return rand() % (pB - pA + 1) + pA;
 }
 
-void Game::createNewPiece()
+void Game::createNewSprite()
 {
-    // New piece
-    piece = nextPiece;
-    board->updateCurrentPiece(piece);
+    // New sprite
+    sprite = nextSprite;
+    board->updateCurrentSprite(sprite);
 
-    posX          = (BOARD_WIDTH / 2) + piece->getXInitialPosition();
-    posY          = piece->getYInitialPosition();
+    posX          = (BOARD_WIDTH / 2) + sprite->getXInitialPosition();
+    posY          = sprite->getYInitialPosition();
 
-    nextPiece     = new Piece(nextPieceType, nextRotation);
+    nextSprite     = new Sprite(nextSpriteType, nextRotation);
 
-    nextPieceType = getRand(1, 7);
+    nextSpriteType = getRand(1, 7);
     nextRotation  = getRand(0, 3);
 }
 
@@ -38,27 +38,27 @@ void Game::initGame()
 {
     srand ((unsigned int) time (NULL));
 
-    pieceType     = getRand (1, 7);
+    spriteType     = getRand (1, 7);
     rotation      = getRand (0, 3);
-    nextPieceType = getRand (1, 7);
+    nextSpriteType = getRand (1, 7);
     nextRotation  = getRand (0, 3);
 
-    piece     = new Piece(pieceType, rotation);
-    nextPiece = new Piece(nextPieceType, nextRotation);
-    board     = new Board( piece, mScreenHeight );
+    sprite     = new Sprite(spriteType, rotation);
+    nextSprite = new Sprite(nextSpriteType, nextRotation);
+    board     = new Board( sprite, mScreenHeight );
 
-    posX      = (BOARD_WIDTH / 2) + piece->getXInitialPosition();
-    posY      = piece->getYInitialPosition();
+    posX      = (BOARD_WIDTH / 2) + sprite->getXInitialPosition();
+    posY      = sprite->getYInitialPosition();
 
     nextPosX = -8;
     nextPosY = 4;
 }
 
 
-void Game::drawPiece(int pX, int pY, Piece* pPiece)
+void Game::drawSprite(int pX, int pY, Sprite* pSprite)
 {
-    Piece* pieceToDraw = pPiece;
-    color mColor = static_cast<color>(pieceToDraw->pieceType);
+    Sprite* spriteToDraw = pSprite;
+    color mColor = static_cast<color>(spriteToDraw->spriteType);
 
     int xPosInPixels = board->getXPosInPixels(pX);
     int yPosInPixels = board->getYPosInPixels(pY);
@@ -67,7 +67,7 @@ void Game::drawPiece(int pX, int pY, Piece* pPiece)
     {
         for(int j = 0; j < PIECE_BLOCKS; j++)
         {
-            if(pieceToDraw->mPiece[i][j] != 0)
+            if(spriteToDraw->mSprite[i][j] != 0)
                 view->drawBlock (xPosInPixels + i * BLOCK_SIZE,
                                      yPosInPixels + j * BLOCK_SIZE,
                                     BLOCK_SIZE - 1, BLOCK_SIZE -1,
@@ -97,7 +97,7 @@ void Game::drawBoard()
     {
         for (int j = 0; j < BOARD_HEIGHT; j++)
         {
-            mColor = static_cast<color>(board->storedPieceType(i, j));
+            mColor = static_cast<color>(board->storedSpriteType(i, j));
             if(!board->isFreeBlock(i,j)){
                 view->drawBlock( mX1 + i * BLOCK_SIZE,
 				 mY + j * BLOCK_SIZE,
@@ -114,9 +114,9 @@ void Game::drawScene ()
     view->clearScreen();                        
     view->loadBackGround();                     
     drawBoard ();				                
-    drawPiece (posX, posY, piece);				
+    drawSprite (posX, posY, sprite);				
     
-    drawPiece (nextPosX, nextPosY, nextPiece); 
+    drawSprite (nextPosX, nextPosY, nextSprite); 
 
     view->updateScreen();
 }

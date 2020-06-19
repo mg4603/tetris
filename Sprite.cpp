@@ -1,5 +1,5 @@
 
-#include "Piece.h"
+#include "Sprite.h"
 
 // I
 int I [5][5] =      {
@@ -59,57 +59,57 @@ int T [5][5]  =     {
                     };
 
 
-Piece::Piece (int pieceType, int pieceRotation)
+Sprite::Sprite (int spriteType, int spriteRotation)
 {
-    this->pieceType = pieceType;
-    getPiece(pieceType);
-    rotatePiece (pieceRotation);
+    this->spriteType = spriteType;
+    getSprite(spriteType);
+    rotateSprite (spriteRotation);
 }
 
 
-void Piece::getPiece(int pieceType)
+void Sprite::getSprite(int spriteType)
 {
-    switch (pieceType)
+    switch (spriteType)
     {
         // I
         case _I:
-            std::copy(&I[0][0], &I[0][0] + 25, &mPiece[0][0]); break;
+            std::copy(&I[0][0], &I[0][0] + 25, &mSprite[0][0]); break;
         // L
         case _L:
-            std::copy(&L[0][0], &L[0][0] + 25, &mPiece[0][0]); break;
+            std::copy(&L[0][0], &L[0][0] + 25, &mSprite[0][0]); break;
         // L mirrored
         case _Lm:
-            std::copy(&Lm[0][0], &Lm[0][0] + 25, &mPiece[0][0]); break;
+            std::copy(&Lm[0][0], &Lm[0][0] + 25, &mSprite[0][0]); break;
         //N
         case _N:
-            std::copy(&N[0][0], &N[0][0] + 25, &mPiece[0][0]); break;
+            std::copy(&N[0][0], &N[0][0] + 25, &mSprite[0][0]); break;
         //N mirrored
         case _Nm:
-            std::copy(&Nm[0][0], &Nm[0][0] + 25, &mPiece[0][0]); break;
+            std::copy(&Nm[0][0], &Nm[0][0] + 25, &mSprite[0][0]); break;
         //Square
         case _S:
-            std::copy(&S[0][0], &S[0][0] + 25, &mPiece[0][0]); break;
+            std::copy(&S[0][0], &S[0][0] + 25, &mSprite[0][0]); break;
         //T
         case _T:
-            std::copy(&T[0][0], &T[0][0] + 25, &mPiece[0][0]); break;
+            std::copy(&T[0][0], &T[0][0] + 25, &mSprite[0][0]); break;
         }
 }
 
 
-void Piece::rotatePiece(int pieceRotation)
+void Sprite::rotateSprite(int spriteRotation)
 {
     int count = 0;
-    while(count < pieceRotation )
+    while(count < spriteRotation )
     {
         for (int i = 0; i < SIZE - 1; i++)
         {
             for (int j = i; j < SIZE - i - 1; j++)
             {
-                int temp                           = mPiece[i][j];
-                mPiece[i][j]                       = mPiece[SIZE - j - 1][i];
-                mPiece[SIZE - j - 1][i]            = mPiece[SIZE - i - 1][SIZE - j - 1];
-                mPiece[SIZE - i - 1][SIZE - j - 1] = mPiece[j][SIZE - i - 1];
-                mPiece[j][SIZE - i - 1]            = temp;
+                int temp                           = mSprite[i][j];
+                mSprite[i][j]                       = mSprite[SIZE - j - 1][i];
+                mSprite[SIZE - j - 1][i]            = mSprite[SIZE - i - 1][SIZE - j - 1];
+                mSprite[SIZE - i - 1][SIZE - j - 1] = mSprite[j][SIZE - i - 1];
+                mSprite[j][SIZE - i - 1]            = temp;
             }
         }
         count++;
@@ -117,16 +117,16 @@ void Piece::rotatePiece(int pieceRotation)
 }
 
 
-int Piece::getXInitialPosition ()
+int Sprite::getXInitialPosition ()
 {
     return -2;
 }
-int Piece::getYInitialPosition ()
+int Sprite::getYInitialPosition ()
 {
     for ( int i = 0; i < SIZE; i++ )
     {
-        if ( mPiece[3][i] == 1 ) return -3;
-        if ( mPiece[4][i] == 1 ) return -4;
+        if ( mSprite[3][i] == 1 ) return -3;
+        if ( mSprite[4][i] == 1 ) return -4;
     }
     return -2;
 }

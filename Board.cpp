@@ -4,11 +4,11 @@
 #include "Board.h"
 
 
-Board::Board (Piece *pPiece, int pScreenHeight)
+Board::Board (Sprite *pSprite, int pScreenHeight)
 {
 	mScreenHeight = 430;
 
-	piece = pPiece;
+	sprite = pSprite;
 
 	initBoard();
 }
@@ -43,12 +43,12 @@ bool Board::isPossibleMovement (int pX, int pY)
 			boardY = pY + j;
 		    if ( boardX < 0 || boardX > BOARD_WIDTH - 1 || boardY > BOARD_HEIGHT - 1 )
 			{
-				if( piece->mPiece[i][j] != 0)
+				if( sprite->mSprite[i][j] != 0)
 					return 0;
 			}
 					if ( boardY >= 0)
 			{
-				if ( piece->mPiece[i][j] != 0 && !isFreeBlock(boardX, boardY))
+				if ( sprite->mSprite[i][j] != 0 && !isFreeBlock(boardX, boardY))
 					return false;
 			}
 		}
@@ -58,7 +58,7 @@ bool Board::isPossibleMovement (int pX, int pY)
 }
 
 
-void Board::storePiece (int pX, int pY)
+void Board::storeSprite (int pX, int pY)
 {
 	int boardX, boardY;
 	for (int i = 0; i < PIECE_BLOCKS; i++)
@@ -67,8 +67,8 @@ void Board::storePiece (int pX, int pY)
         for (int j = 0; j < PIECE_BLOCKS; j++)
         {
 			boardY = pY + j;
-    	       if ( piece->mPiece[i][j] != 0)
-                mBoard[boardX][boardY] = piece->pieceType;
+    	       if ( sprite->mSprite[i][j] != 0)
+                mBoard[boardX][boardY] = sprite->spriteType;
         }
     }
 }
@@ -119,9 +119,9 @@ void Board::initBoard()
 }
 
 
-void Board::updateCurrentPiece(Piece *piece)
+void Board::updateCurrentSprite(Sprite *sprite)
 {
-	this->piece = piece;
+	this->sprite = sprite;
 }
 
 void Board::clearBoard()
@@ -129,7 +129,7 @@ void Board::clearBoard()
 	initBoard();
 }
 
-int Board::storedPieceType(int x, int y)
+int Board::storedSpriteType(int x, int y)
 {
 	return mBoard[x][y];
 }
