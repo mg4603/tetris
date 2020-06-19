@@ -1,6 +1,3 @@
-/*****************************************************************************************
- * View.h - Class for handling drawing, it uses SDL2 for the rendering.
-/*****************************************************************************************/
 
 #ifndef _VIEW_
 #define _VIEW_
@@ -18,7 +15,7 @@
 
 
 
-enum color {ZERO, BLACK, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW, WHITE, COLOR_MAX}; // Colors
+enum color {ZERO, BLACK, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW, WHITE, COLOR_MAX}; 
 
 class View {
 public:

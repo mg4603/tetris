@@ -1,6 +1,3 @@
-/**************************************************************************
- * Commands.h - Class that handles inputs (keyboard inputs)
-/**************************************************************************/
 
 #ifndef _COMMANDS_
 #define _COMMANDS_
@@ -19,4 +16,4 @@ public:
     int isKeyDown  (int pKey);
 };
 
-#endif // _COMMANDS_
+#endif 

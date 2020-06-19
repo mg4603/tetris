@@ -1,6 +1,3 @@
-/*****************************************************************************************
- * Piece.cpp - creates a piece array given a type and rotation
-/*****************************************************************************************/
 
 #include "Piece.h"
 
@@ -62,31 +59,14 @@ int T [5][5]  =     {
                     };
 
 
-
-/*
-==================================================
-Piece Constructor
-
-Parameters:
->> pieceType:     one of the seven different pieces
->> pieceRotation: one of the four different orientations a piece can exist in
-==================================================
-*/
 Piece::Piece (int pieceType, int pieceRotation)
 {
-    // assigns mPiece one of the piece types and rotates it
     this->pieceType = pieceType;
     getPiece(pieceType);
     rotatePiece (pieceRotation);
 }
 
-/*
-==================================================
-getPiece - Assigns one of the Piece arrays to member variable mPiece
 
->> pieceType: random number 0 - 6, which piece to assign
-==================================================
-*/
 void Piece::getPiece(int pieceType)
 {
     switch (pieceType)
@@ -115,13 +95,7 @@ void Piece::getPiece(int pieceType)
         }
 }
 
-/*
-=======================================
-Rotate Piece - Rotates Piece by 90 degrees Clockwise
 
->> pieceRotation: how many times to rotate
-===========================================
-*/
 void Piece::rotatePiece(int pieceRotation)
 {
     int count = 0;
@@ -142,19 +116,13 @@ void Piece::rotatePiece(int pieceRotation)
     }
 }
 
-/*
-===========================================================
-Get initial position functions
-- sets the pivot of the piece to the center part of the board
-============================================================
-*/
+
 int Piece::getXInitialPosition ()
 {
     return -2;
 }
 int Piece::getYInitialPosition ()
 {
-    //check bottom half of the Piece array
     for ( int i = 0; i < SIZE; i++ )
     {
         if ( mPiece[3][i] == 1 ) return -3;

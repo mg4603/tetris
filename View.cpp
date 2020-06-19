@@ -1,6 +1,3 @@
-/*****************************************************************************************
- * View.cpp - Class for handling drawing, it uses SDL2 for the rendering.
-/*****************************************************************************************/
 
 #include "View.h"
 
@@ -8,9 +5,9 @@ static SDL_Window  *win;
 static SDL_Renderer *ren;
 static SDL_Surface  *surface;
 static SDL_Surface  *imgSurface;
-static SDL_Texture *background_tx;						    // Screen
+static SDL_Texture *background_tx;						   
 static Uint32 mColors [COLOR_MAX][4] = {  {0   , 0   , 0   , 0   },
-                                          {0xc0, 0xc0, 0xc0, 0xff},					// Colors
+                                          {0xc0, 0xc0, 0xc0, 0xff},					
                                           {0xff, 0x00, 0x00, 0xff},
                                           {0x00, 0xff, 0x00, 0xff},
                                           {0xad, 0xd8, 0xe6, 0xff},
@@ -22,25 +19,20 @@ static Uint32 mColors [COLOR_MAX][4] = {  {0   , 0   , 0   , 0   },
 int View::messageBox ()
 {
     const SDL_MessageBoxButtonData buttons[] = {
-          { /* .flags, .buttonid, .text */        0, 0, "NO" },
+          {         0, 0, "NO" },
           { SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT, 1, "YES" },
       };
     const SDL_MessageBoxColorScheme colorScheme = {
-          { /* .colors (.r, .g, .b) */
-              /* [SDL_MESSAGEBOX_COLOR_BACKGROUND] */
+          { 
               {   0,   0,   0 },
-              /* [SDL_MESSAGEBOX_COLOR_TEXT] */
               {   0, 255,   0 },
-              /* [SDL_MESSAGEBOX_COLOR_BUTTON_BORDER] */
               { 255, 255,   0 },
-              /* [SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND] */
               { 205, 205, 205 },
-              /* [SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED] */
               { 255,   0, 255 }
           }
       };
     const SDL_MessageBoxData messageboxdata = {
-            SDL_MESSAGEBOX_INFORMATION, /* .flags */
+            SDL_MESSAGEBOX_INFORMATION, 
             NULL, 
             "GAME OVER!", 
             "Would you like to play again?", 
@@ -61,11 +53,7 @@ int View::messageBox ()
      }
      return 0;
 }
-/*
-======================================
-Init
-======================================
-*/
+
 View::View()
 {
     initGraph();
@@ -73,8 +61,7 @@ View::View()
 
 int View::initGraph ()
 {
-    // const SDL_RendererInfo *info;
-
+    
     Uint32 videoflags;
     if (SDL_Init(SDL_INIT_VIDEO) != 0)
     {
@@ -104,7 +91,6 @@ int View::initGraph ()
     }
 
     surface = SDL_GetWindowSurface(win);
-    // imgSurface = SDL_LoadBMP("Dreaming-of-Mars.bmp");
     background_tx = SDL_CreateTextureFromSurface (ren, surface);
     SDL_FreeSurface( surface );
     SDL_RenderCopy(ren, background_tx, NULL, NULL);
@@ -114,24 +100,11 @@ int View::initGraph ()
     return 1;
 }
 
-/*
-=================================================================
-drawBlock - Draws text on screen
-=================================================================
-
-
-asfdhljaslkdjflkasjdlkfjlkajsdlkfjlksjdlfkjalksdjlfkjlsajdflkjlaksdjfl;jsalkdjflkjsalkdfjlksjadl fyidhgoahohaodfhj ahdmfkj
-*/
 
 
 
 
 
-/*
-=================================================================
-drawBlock - Draws the rectangle blocks in the game
-=================================================================
-*/
 void View::drawBlock  (int pX1, int pY1, int pX2, int pY2, enum color pC)
 {
     SDL_Rect r = {pX1, pY1, pX2, pY2};
@@ -140,11 +113,7 @@ void View::drawBlock  (int pX1, int pY1, int pX2, int pY2, enum color pC)
 
 }
 
-/*
-======================================
-Clear the screen to black
-======================================
-*/
+
 void View::clearScreen ()
 {
     color pC = BLACK;
@@ -152,29 +121,20 @@ void View::clearScreen ()
     SDL_RenderClear(ren);
 }
 
-// returns screenHeight
 int View::getScreenHeight ()
 {
     return SDL_GetWindowSurface(win)->h;
 }
 
-// updates screen to show all the renderings
 void View::updateScreen ()
 {
     SDL_RenderPresent(ren);
 }
 
-// Loads Background image
 void View::loadBackGround()
 {
     SDL_RenderCopy(ren, background_tx, NULL, NULL);
 }
-
-// Loads text
-//void View::loadText ()
-//{
-//    TTF_Font* Sans = NULL;
-//}
 
 void View::cleanUp()
 {

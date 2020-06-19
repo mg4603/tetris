@@ -8,14 +8,9 @@
 const int SCREEN_WIDTH = 100;
 const int SCREEN_HEIGHT = 480;
 
-/*
-=========================
-main
-==========================
-*/
+
 int main (int argc, char* args[])
 {
-    // Initializing game objects
     View view;
     Commands cmds;
     int screenHeight = view.getScreenHeight();
@@ -24,10 +19,9 @@ int main (int argc, char* args[])
     bool quit = false;
     SDL_Event e;
 
-    //Get the actual clock in milliseconds (SDL)
     unsigned long time1 = SDL_GetTicks();
 
-    // ------Main Loop ---------------
+    //  game loop
     while (!quit)
     {
         game.drawScene();
@@ -38,8 +32,7 @@ int main (int argc, char* args[])
                 quit = true;
         }
 
-        //-------input----------
-        switch (key)
+       switch (key)
         {
             case (10):
             {
@@ -65,8 +58,7 @@ int main (int argc, char* args[])
             }
             case (SDLK_SPACE):
             {
-                // check collision from up to the possible bottom
-                while (game.board->isPossibleMovement(game.posX, game.posY))
+               while (game.board->isPossibleMovement(game.posX, game.posY))
                 { game.posY++; }
 
                 game.board->storePiece (game.posX, game.posY - 1);
@@ -91,7 +83,6 @@ int main (int argc, char* args[])
             }
         }
 
-        // -------- vertical movement --------------
         unsigned long time2 = SDL_GetTicks();
         if ((time2 - time1) > WAIT_TIME)
         {

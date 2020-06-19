@@ -1,17 +1,9 @@
-/**************************************************************************
- * Commands.cpp - Class that handles inputs (keyboard inputs)
-/**************************************************************************/
 
 #include "Commands.h"
 
-/*
-======================================
-Keyboard Input
-======================================
-*/
+
 int Commands::pollkey (SDL_Event *event)
 {
-    //SDL_Event event;
     while( SDL_PollEvent(event) )
     {
         switch (event->type)
@@ -25,11 +17,6 @@ int Commands::pollkey (SDL_Event *event)
 }
 
 
-/*
-======================================
-Keyboard Input
-======================================
-*/
 int Commands::isKeyDown (int pKey)
 {
     const Uint8* myKeytable;
