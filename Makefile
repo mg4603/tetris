@@ -1,5 +1,5 @@
 #list of files for compilation
-OBJS = Main.cpp Sprite.cpp View.cpp Board.cpp Game.cpp KeyBoardInputs.cpp
+OBJS = Main.cpp Sprite.cpp View.cpp Board.cpp GameManager.cpp KeyBoardInputs.cpp
 
 #compiler
 CC = g++

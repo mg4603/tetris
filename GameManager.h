@@ -1,7 +1,7 @@
 
 
-#ifndef _GAME_
-#define _GAME_
+#ifndef _GAMEMANAGER_
+#define _GAMEMANAGER_
 
 // ------ Includes -----
 
@@ -15,9 +15,9 @@
 #define WAIT_TIME 700           
 
 
-class Game {
+class GameManager {
 public:
-    Game    (  View *pView,
+    GameManager    (  View *pView,
                KeyBoardInputs *pKeyBoardInputs,
                int pScreenHeight );
 

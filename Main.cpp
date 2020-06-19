@@ -3,7 +3,7 @@
 #include <stdlib.h>
 //#include <tchar.h>
 #endif
-#include "Game.h"
+#include "GameManager.h"
 
 const int SCREEN_WIDTH = 100;
 const int SCREEN_HEIGHT = 480;
@@ -14,17 +14,17 @@ int main (int argc, char* args[])
     View view;
     KeyBoardInputs keyBoardInputs;
     int screenHeight = view.getScreenHeight();
-    Game game(&view, &keyBoardInputs, screenHeight);
+    GameManager gameManager(&view, &keyBoardInputs, screenHeight);
 
     bool quit = false;
     SDL_Event e;
 
     unsigned long time1 = SDL_GetTicks();
 
-    //  game loop
+    //  gameManager loop
     while (!quit)
     {
-        game.drawScene();
+        gameManager.drawScene();
 
         int key = keyBoardInputs.pollkey(&e);
         while(SDL_PollEvent( &e ) != 0){
@@ -40,44 +40,44 @@ int main (int argc, char* args[])
             }
             case (SDLK_RIGHT):
             {
-                if (game.board->isPossibleMovement (game.posX + 1, game.posY))
-                    game.posX++;
+                if (gameManager.board->isPossibleMovement (gameManager.posX + 1, gameManager.posY))
+                    gameManager.posX++;
                 break;
             }
             case (SDLK_LEFT):
             {
-                if (game.board->isPossibleMovement (game.posX - 1, game.posY))
-                    game.posX--;
+                if (gameManager.board->isPossibleMovement (gameManager.posX - 1, gameManager.posY))
+                    gameManager.posX--;
                 break;
             }
             case (SDLK_DOWN):
             {
-                if (game.board->isPossibleMovement (game.posX, game.posY + 1))
-                    game.posY++;
+                if (gameManager.board->isPossibleMovement (gameManager.posX, gameManager.posY + 1))
+                    gameManager.posY++;
                 break;
             }
             case (SDLK_SPACE):
             {
-               while (game.board->isPossibleMovement(game.posX, game.posY))
-                { game.posY++; }
+               while (gameManager.board->isPossibleMovement(gameManager.posX, gameManager.posY))
+                { gameManager.posY++; }
 
-                game.board->storeSprite (game.posX, game.posY - 1);
-                game.board->deletePossibleLines ();
+                gameManager.board->storeSprite (gameManager.posX, gameManager.posY - 1);
+                gameManager.board->deletePossibleLines ();
 
-                if (game.board->isGameOver())
+                if (gameManager.board->isGameOver())
                 {
-                    if(!game.restart()) goto exit_loop;
+                    if(!gameManager.restart()) goto exit_loop;
                 }
 
-                game.createNewSprite();
+                gameManager.createNewSprite();
                 break;
             }
             case (SDLK_UP):
             {
-                game.sprite->rotateSprite();
-                if (!game.board->isPossibleMovement (game.posX, game.posY)){
+                gameManager.sprite->rotateSprite();
+                if (!gameManager.board->isPossibleMovement (gameManager.posX, gameManager.posY)){
                     int i = 3;
-                    game.sprite->rotateSprite(3);  //
+                    gameManager.sprite->rotateSprite(3);  //
                 }
                 break;
             }
@@ -86,18 +86,18 @@ int main (int argc, char* args[])
         unsigned long time2 = SDL_GetTicks();
         if ((time2 - time1) > WAIT_TIME)
         {
-            if (game.board->isPossibleMovement(game.posX, game.posY + 1)) {
-                game.posY++;
+            if (gameManager.board->isPossibleMovement(gameManager.posX, gameManager.posY + 1)) {
+                gameManager.posY++;
             } else {
-                game.board->storeSprite (game.posX, game.posY);
-                game.board->deletePossibleLines ();
+                gameManager.board->storeSprite (gameManager.posX, gameManager.posY);
+                gameManager.board->deletePossibleLines ();
 
-                if(game.board->isGameOver())
+                if(gameManager.board->isGameOver())
                 {
 
-                    if(!game.restart()) break;
+                    if(!gameManager.restart()) break;
                 }
-                game.createNewSprite();
+                gameManager.createNewSprite();
             }
 
             time1 = SDL_GetTicks();

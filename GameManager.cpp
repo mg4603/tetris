@@ -1,9 +1,9 @@
 
 #ifndef LINUX
 #endif
-#include "Game.h"
+#include "GameManager.h"
 
-Game::Game (View *pView, KeyBoardInputs *pKeyBoardInputs, int pScreenHeight )
+GameManager::GameManager (View *pView, KeyBoardInputs *pKeyBoardInputs, int pScreenHeight )
 {
     mScreenHeight = 430;
 
@@ -14,12 +14,12 @@ Game::Game (View *pView, KeyBoardInputs *pKeyBoardInputs, int pScreenHeight )
 }
 
 
-int Game::getRand (int pA, int pB)
+int GameManager::getRand (int pA, int pB)
 {
     return rand() % (pB - pA + 1) + pA;
 }
 
-void Game::createNewSprite()
+void GameManager::createNewSprite()
 {
     // New sprite
     sprite = nextSprite;
@@ -34,7 +34,7 @@ void Game::createNewSprite()
     nextRotation  = getRand(0, 3);
 }
 
-void Game::initGame()
+void GameManager::initGame()
 {
     srand ((unsigned int) time (NULL));
 
@@ -55,7 +55,7 @@ void Game::initGame()
 }
 
 
-void Game::drawSprite(int pX, int pY, Sprite* pSprite)
+void GameManager::drawSprite(int pX, int pY, Sprite* pSprite)
 {
     Sprite* spriteToDraw = pSprite;
     color mColor = static_cast<color>(spriteToDraw->spriteType);
@@ -78,7 +78,7 @@ void Game::drawSprite(int pX, int pY, Sprite* pSprite)
 }
 
 
-void Game::drawBoard()
+void GameManager::drawBoard()
 {
     int mX1 = BOARD_POSITION - (BLOCK_SIZE * (BOARD_WIDTH / 2)) - 1;
     int mX2 = BOARD_POSITION + (BLOCK_SIZE * (BOARD_WIDTH / 2));
@@ -109,7 +109,7 @@ void Game::drawBoard()
 }
 
 
-void Game::drawScene ()
+void GameManager::drawScene ()
 {
     view->clearScreen();                        
     view->loadBackGround();                     
@@ -122,7 +122,7 @@ void Game::drawScene ()
 }
 
 
-bool Game::restart()
+bool GameManager::restart()
 {
     int response = view->messageBox();
     if(response) {

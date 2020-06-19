@@ -1,6 +1,6 @@
 
-#ifndef _COMMANDS_
-#define _COMMANDS_
+#ifndef _KEYBOARDINPUTS_
+#define _KEYBOARDINPUTS_
 
 // ------- Includes --------
 
